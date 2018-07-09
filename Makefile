@@ -1,3 +1,10 @@
+# Determine which OS is running, and appropriately set the command to install rust + cargo
+ifeq ($(shell uname -s),Linux)
+rustinst=sudo apt install -y cargo
+else
+rustinst=brew install rust-cargo
+endif
+
 install: install-nvim
 
 install-nvim: install-rust-cargo
@@ -8,7 +15,5 @@ install-nvim: install-rust-cargo
 update-nvim:
 	nvim ./nvim/init.vim -c ":PlugInstall" -c ":q" -c ":q"
 
-
 install-rust-cargo:
-	# TODO: check if OS is macOS or Ubuntu
-	sudo apt install -y cargo
+	$(rustinst)
