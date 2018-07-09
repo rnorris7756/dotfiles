@@ -17,3 +17,8 @@ update-nvim:
 
 install-rust-cargo:
 	$(rustinst)
+
+git-config:
+	git config --global user.name "Robert Norris"
+	git config --global user.email "rnorris7756@gmail.com"
+	git config --global core.editor "vim"
