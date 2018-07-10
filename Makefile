@@ -5,20 +5,24 @@ else
 rustinst=brew install rust-cargo
 endif
 
+DOTFILE_PATH := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+
 install: install-nvim
 
 install-nvim: install-rust-cargo
 	mkdir -p ~/.config
-	ln -sv ./nvim ~/.config/nvim
-	nvim ./nvim/init.vim -c ":PlugInstall" -c ":q" -c ":q"
+	ln -sv $(DOTFILE_PATH)/nvim ~/.config/nvim
+	nvim $(DOTFILE_PATH)/nvim/init.vim -c ":PlugInstall" -c ":q" -c ":q"
 
 update-nvim:
-	nvim ./nvim/init.vim -c ":PlugInstall" -c ":q" -c ":q"
+	nvim $(DOTFILE_PATH)/nvim/init.vim -c ":PlugInstall" -c ":q" -c ":q"
 
 install-rust-cargo:
 	$(rustinst)
 
 git-config:
-	git config --global user.name "Robert Norris"
-	git config --global user.email "rnorris7756@gmail.com"
-	git config --global core.editor "vim"
+	ln -sv $(DOTFILE_PATH)/git/gitconfig ~/.gitconfig
+
+test:
+	# Spin up a docker container and ensure that the configuration files are set up properly.
+	docker run -it ubuntu:18.04 "/bin/bash"

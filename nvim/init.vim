@@ -9,7 +9,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-jdaddy' " JSON tools.
+Plug 'scrooloose/nerdtree' " See https://stackoverflow.com/questions/4571494/open-a-buffer-as-a-vertical-split-in-vim for tips on navigating and splitting panes
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Plugin prerequisites:
@@ -171,3 +172,11 @@ let g:airline_theme= 'oceanicnext'
 " Nerdtree settings
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" vim-jdaddy bindings:
+" aj provides a text object for the outermost JSON object, array, string, number, or keyword.
+" gqaj pretty prints (wraps/indents/sorts keys/otherwise cleans up) the JSON construct under the cursor.
+" gwaj takes the JSON object on the clipboard and extends it into the JSON object under the cursor.
+" There are also ij variants that target innermost rather than outermost JSON construct.
+imap <C-q>jp <ESC>gqaji
+nmap <C-q>jp gqaj

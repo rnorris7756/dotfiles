@@ -1,0 +1,16 @@
+[color]
+  ui = true
+
+[alias]
+  amend = !git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
+
+[core]
+  compression = 9
+  editor = vim
+
+[push]
+	default = simple
+
+[user]
+	name = Robert Norris
+	email = rnorris7756@gmail.com
