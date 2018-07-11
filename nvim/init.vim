@@ -162,7 +162,7 @@ endif
 
 " Theme
 syntax enable
-colorscheme OceanicNext
+silent! colorscheme OceanicNext " If OceanicNext is not present, do not display a warning.  This keeps the initial load of neovim from requiring the user to press enter.
 
 " Airline settings:
 set encoding=utf-8
