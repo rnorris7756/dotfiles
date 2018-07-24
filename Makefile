@@ -1,7 +1,7 @@
 # Determine which OS is running, and appropriately set the command to install rust + cargo
 ifeq ($(shell uname -s),Linux)
 rustinst:=sudo apt install -y cargo
-pkginst:=sudo add-apt-repository -y ppa:neovim-ppa/stable && sudo apt-get update && sudo apt-get install -y neovim python3-pip git curl && sudo pip3 install neovim jedi
+pkginst:=sudo add-apt-repository -y ppa:neovim-ppa/stable && sudo apt-get update && sudo apt-get install -y neovim python3-pip git curl && pip3 install --user neovim jedi thefuck
 else
 rustinst:=brew install rust-cargo
 pkginst:=brew update && brew install nvim

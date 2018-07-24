@@ -4,6 +4,10 @@
 [alias]
   amend = !git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
 
+[branch]
+  autosetupmerge = always
+  autosetuprebase = always
+
 [core]
   compression = 9
   editor = vim
