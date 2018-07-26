@@ -6,7 +6,6 @@
 
 [branch]
   autosetupmerge = always
-  autosetuprebase = always
 
 [core]
   compression = 9
